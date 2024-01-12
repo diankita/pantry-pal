@@ -2,16 +2,28 @@ module.exports = (sequelize, DataTypes) => {
   const Ingredient = sequelize.define(
     'Ingredient',
     {
-      ingredientId: {
+      id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-      ingredientName: {
+      name: {
         type: DataTypes.STRING(100),
         allowNull: false,
       },
+      image: {
+        type: DataTypes.STRING, // assuming URL or filename
+        allowNull: true,
+      },
+      aisle: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      // possibleUnits: {
+      //   type: DataTypes.JSONB,
+      //   allowNull: true,
+      // },
     },
     { freezeTableName: true }
   );
