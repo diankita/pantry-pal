@@ -2,22 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [
   {
-    id: 1005096,
-    label: 'bone in skinless chicken thighs',
-    name: 'bone in skinless chicken thighs',
-    image: 'chicken-thighs.png',
-    aisle: 'Meat',
-    possibleUnits: [
-      'package',
-      'piece',
-      'g',
-      'oz',
-      'serving',
-      'thigh with skin',
-    ],
-    children: [],
-  },
-  {
     id: 16058,
     label: 'canned chickpeas',
     name: 'canned chickpeas',
