@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const db = require('./models/index');
 const inventoryRouter = require('./routers/inventory.router');
-const ingredientRouter = require('./routers/ingredient.router.js')
+const ingredientRouter = require('./routers/ingredient.router.js');
 
 const app = express();
 app.use(cors());
@@ -17,13 +17,19 @@ app.use((req, res, next) => {
 app.use('/inventory', inventoryRouter);
 app.use('/ingredient', ingredientRouter);
 
-
-
-
 (async () => {
   try {
-    // await db.sequelize.drop();
+    await db.sequelize.drop();
     await db.sequelize.sync();
+
+    // Add fake data
+    db.User.create({
+      userId: 1,
+      name: 'Joel',
+      email: 'joelcheah01@gmail.com',
+      password: '12345',
+    });
+
     console.log('Database synced successfully.');
     const PORT = process.env.PORT || 3001;
     app.listen(PORT, console.log(`Server started on port ${PORT}`));
