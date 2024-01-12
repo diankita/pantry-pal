@@ -46,7 +46,7 @@ exports.search = async (req, res) => {
   try {
     const query = req.query.query;
     const response = await fetch(
-      `https://${process.env.FOOD_API_URL}/food/ingredients/search?query=${query}&number=1`,
+      `https://${process.env.FOOD_API_URL}/food/ingredients/search?query=${query}&addChildren=true&metaInformation=true&offset=0&number=1`,
       {
         headers: {
           'X-RapidAPI-Key':
