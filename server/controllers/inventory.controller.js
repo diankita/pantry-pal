@@ -1,15 +1,17 @@
 const db = require('../models');
 
 exports.addToInventory = async (req, res) => {
+
+  // Start a transaction
+  const transaction = await db.sequelize.transaction();
   try {
     const { userId, ingredient } = req.body;
-
-    // Start a transaction
-    const transaction = await db.sequelize.transaction();
+    console.log(`Adding ingredient for user ${userId}`);
 
     // Check if User exist
     const user = await db.User.findByPk(userId);
     if (!user) {
+      console.log('User not found');
       return res.status(404).send('User not found');
     }
 

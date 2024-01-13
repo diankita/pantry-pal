@@ -3,6 +3,7 @@ import IngredientSelect from '@/components/IngredientSelect';
 import InventoryList from '@/components/InventoryList';
 import { inventoryAdded } from '@/lib/features/inventory/inventorySlice';
 import { useAppDispatch } from '@/lib/hooks';
+import { fetchWithTimeout } from '@/services/api';
 import { Box } from '@mui/material';
 import { useState } from 'react';
 
@@ -10,8 +11,27 @@ export default function InventoryEditor() {
   const [autocompleteKey, setAutocompleteKey] = useState(0);
   const dispatch = useAppDispatch();
 
-  function onIngredientSelect(event, ingredient) {
-    console.log(ingredient);
+  // When user choose one of the autocomplete options from the dropdown, send a second request to the other api to get full details of the ingredient
+
+  // TODO save it to user database, and then add to rtk state
+  // TODO when app launch call api to get list of save inventories
+  async function onIngredientSelect(event, selectedIngredient) {
+    console.log(selectedIngredient);
+
+    // Get full ingredient details from name (external api)
+    const ingredientDetails = await fetchWithTimeout(
+      `http://localhost:3001/ingredient/search?query=${selectedIngredient.name}`
+    ).then((data) => data.results[0]);
+
+    // Save to own db
+    await fetchWithTimeout(`http://localhost:3001/inventory`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ingredient: ingredientDetails, userId: 1 }),
+    }).then((data) => dispatch(inventoryAdded(data)));
+    // console.log(ingredientDetails);
     // dispatch(inventoryAdded(ingredient));
     setAutocompleteKey((prev) => prev + 1);
   }

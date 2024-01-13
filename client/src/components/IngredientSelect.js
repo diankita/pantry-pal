@@ -15,8 +15,7 @@ export default function IngredientSelect({ onChange, filterFunc }) {
   const debouncedInput = useDebounce(input, 800, '');
 
   useEffect(() => {
-    console.log('fetching', debouncedInput);
-    if (debouncedInput.length > 2) {
+    if (debouncedInput.length > 1) {
       fetchWithTimeout(
         `http://localhost:3001/ingredient/autocomplete?query=${debouncedInput}`
       ).then((data) => setOptions(data));
