@@ -1,20 +1,11 @@
 'use client';
-
-import { usePathname } from 'next/navigation';
-import {
-  AppBar,
-  BottomNavigation,
-  BottomNavigationAction,
-  Button,
-  IconButton,
-  Paper,
-  Slide,
-  Toolbar,
-  Typography,
-  useScrollTrigger,
-} from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import Slide from '@mui/material/Slide';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-// import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 export default function TopNav({ title }) {
   const trigger = useScrollTrigger();

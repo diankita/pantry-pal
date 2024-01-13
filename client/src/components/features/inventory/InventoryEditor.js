@@ -4,7 +4,6 @@ import InventoryList from '@/components/InventoryList';
 import { inventoryAddOne } from '@/lib/features/inventory/inventorySlice';
 import { useAppDispatch } from '@/lib/hooks';
 import { fetchWithTimeout } from '@/services/api';
-import { Box } from '@mui/material';
 import { useState } from 'react';
 
 export default function InventoryEditor() {
