@@ -1,16 +1,8 @@
-import IngredientSelect from '@/components/IngredientSelect';
-import TopNav from '@/components/TopNav';
-import InventoryList from '@/components/InventoryList';
-import {
-  AppBar,
-  Autocomplete,
-  Box,
-  Button,
-  TextField,
-  Toolbar,
-} from '@mui/material';
 import InventoryEditor from '@/components/features/inventory/InventoryEditor';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 export default function Page() {
   return (
@@ -21,7 +13,8 @@ export default function Page() {
       <Button
         variant="contained"
         href="/inventory/recipe-suggestion"
-        fullWidth="true" endIcon={<ArrowForwardIcon />}>
+        fullWidth={true}
+        endIcon={<ArrowForwardIcon />}>
         View Recipes
       </Button>
     </Box>

@@ -1,7 +1,6 @@
-import { Box } from '@mui/material';
-import styles from './layout.module.css';
 import BottomNav from '@/components/BottomNav';
 import TopNav from '@/components/TopNav';
+import Box from '@mui/material/Box';
 
 export default function MainLayout({ children }) {
   return (

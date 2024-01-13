@@ -1,7 +1,3 @@
 export default function Page() {
-  return (
-    <>
-      <h2>sladijlasdjf</h2>
-    </>
-  );
+  return (<div><h1>sldajf</h1></div>)
 }

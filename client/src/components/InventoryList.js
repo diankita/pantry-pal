@@ -1,12 +1,10 @@
 'use client';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  IconButton,
-  Typography,
-} from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { fetchWithTimeout } from '@/services/api';
 import { useEffect } from 'react';
