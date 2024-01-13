@@ -7,7 +7,13 @@ export default function MainLayout({ children }) {
     <Box height="100%" paddingBottom={7}>
       <TopNav title="aslkdj"></TopNav>
       {children}
+    <Box height="100%" paddingBottom={7}>
+      <TopNav title="aslkdj"></TopNav>
+      {children}
       <BottomNav></BottomNav>
+    </Box>
+    // TODO use redux to control state for showing bottom nav
+    // TODO use redux to control state for top nav title
     </Box>
     // TODO use redux to control state for showing bottom nav
     // TODO use redux to control state for top nav title
