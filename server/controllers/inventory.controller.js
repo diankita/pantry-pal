@@ -4,7 +4,25 @@ exports.addToInventory = async (req, res) => {
   // Start a transaction
   const transaction = await db.sequelize.transaction();
   try {
-    const { userId, ingredient } = req.body;
+    const { userId, ingredientName } = req.body;
+
+    const ingredientDetails = await fetch(
+      `https://${process.env.FOOD_API_URL}/food/ingredients/search?query=${ingredientName}&addChildren=true&metaInformation=true&offset=0&number=1`,
+      {
+        headers: {
+          'X-RapidAPI-Key': process.env.FOOD_API_KEY,
+          'X-RapidAPI-Host': process.env.FOOD_API_URL,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Network response was not ok');
+      })
+      .then((data) => data.results[0]);
+
     console.log(`Adding ingredient for user ${userId}`);
 
     // Check if User exist
@@ -15,14 +33,16 @@ exports.addToInventory = async (req, res) => {
     }
 
     // Check if the selected ingredient exists
-    let ingredientFromLocalDB = await db.Ingredient.findByPk(ingredient.id);
+    let ingredientFromLocalDB = await db.Ingredient.findByPk(
+      ingredientDetails.id
+    );
     // If Not exists, Add Ingredient to Ingredient Table
     if (!ingredientFromLocalDB) {
       ingredientFromLocalDB = await db.Ingredient.create({
-        id: ingredient.id,
-        name: ingredient.name,
-        image: ingredient.image,
-        aisle: ingredient.aisle,
+        id: ingredientDetails.id,
+        name: ingredientDetails.name,
+        image: ingredientDetails.image,
+        aisle: ingredientDetails.aisle,
         // possibleUnits: JSON.stringify(ingredient.possibleUnits),
       });
     }

@@ -19,9 +19,9 @@ export default function InventoryEditor() {
     console.log(selectedIngredient);
 
     // Get full ingredient details from name (external api)
-    const ingredientDetails = await fetchWithTimeout(
-      `http://localhost:3001/ingredient/search?query=${selectedIngredient.name}`
-    ).then((data) => data.results[0]);
+    // const ingredientDetails = await fetchWithTimeout(
+    //   `http://localhost:3001/ingredient/search?query=${selectedIngredient.name}`
+    // ).then((data) => data.results[0]);
 
     // Save to own db
     fetchWithTimeout(`http://localhost:3001/inventory`, {
@@ -29,16 +29,20 @@ export default function InventoryEditor() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ingredient: ingredientDetails, userId: 1 }),
+      body: JSON.stringify({
+        ingredientName: selectedIngredient.name,
+        userId: 1,
+      }),
     }).then((data) => dispatch(inventoryAddOne(data)));
+
     setAutocompleteKey((prev) => prev + 1);
   }
   return (
-    <Box padding={2}>
+    <>
       <IngredientSelect
         onChange={onIngredientSelect}
         key={autocompleteKey}></IngredientSelect>
       <InventoryList></InventoryList>
-    </Box>
+    </>
   );
 }
