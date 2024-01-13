@@ -1,5 +1,5 @@
 'use client';
-import { useAppSelector } from '@/lib/hooks';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import {
   Card,
   CardContent,
@@ -8,10 +8,20 @@ import {
   Typography,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { fetchWithTimeout } from '@/services/api';
+import { useEffect } from 'react';
+import { inventoryAddList } from '@/lib/features/inventory/inventorySlice';
 
 export default function InventoryList() {
-  const inventory = useAppSelector((state) => state.inventory);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    fetchWithTimeout(`http://localhost:3001/inventory?userId=1`).then((data) =>
+      dispatch(inventoryAddList(data))
+    );
+  }, [dispatch]);
 
+  const inventory = useAppSelector((state) => state.inventory);
+  // console.log(inventory);
   const handleDelete = (itemId) => {
     // Implement the delete functionality
     console.log('Delete item with id:', itemId);

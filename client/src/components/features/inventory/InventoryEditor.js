@@ -1,7 +1,7 @@
 'use client';
 import IngredientSelect from '@/components/IngredientSelect';
 import InventoryList from '@/components/InventoryList';
-import { inventoryAdded } from '@/lib/features/inventory/inventorySlice';
+import { inventoryAddOne } from '@/lib/features/inventory/inventorySlice';
 import { useAppDispatch } from '@/lib/hooks';
 import { fetchWithTimeout } from '@/services/api';
 import { Box } from '@mui/material';
@@ -24,15 +24,13 @@ export default function InventoryEditor() {
     ).then((data) => data.results[0]);
 
     // Save to own db
-    await fetchWithTimeout(`http://localhost:3001/inventory`, {
+    fetchWithTimeout(`http://localhost:3001/inventory`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ ingredient: ingredientDetails, userId: 1 }),
-    }).then((data) => dispatch(inventoryAdded(data)));
-    // console.log(ingredientDetails);
-    // dispatch(inventoryAdded(ingredient));
+    }).then((data) => dispatch(inventoryAddOne(data)));
     setAutocompleteKey((prev) => prev + 1);
   }
   return (
