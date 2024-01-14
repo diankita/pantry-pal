@@ -4,6 +4,7 @@ const cors = require('cors');
 const db = require('./models/index');
 const inventoryRouter = require('./routers/inventory.router');
 const ingredientRouter = require('./routers/ingredient.router.js');
+const recipeRouter = require('./routers/recipe.router.js');
 
 const app = express();
 app.use(cors());
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 // Example route setup
 app.use('/inventory', inventoryRouter);
 app.use('/ingredient', ingredientRouter);
+app.use('/recipe', recipeRouter);
 
 // TODO unified error handling
 // app.use((err, req, res, next) => {
