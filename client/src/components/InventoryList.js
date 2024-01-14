@@ -27,12 +27,12 @@ export default function InventoryList() {
 
   const renderedInventory = inventory.map((item) => (
     <Card key={item.id} sx={{ display: 'flex', my: 2 }}>
-      {/* <CardMedia
+      <CardMedia
         component="img"
         sx={{ width: '20%' }}
-        image={item.image} // Assuming 'image' is the URL to the item's image
+        image={`https://spoonacular.com/cdn/ingredients_250x250/${item.image}`} // Assuming 'image' is the URL to the item's image
         alt={item.name}
-      /> */}
+      />
       <CardContent sx={{ flex: '1 0 auto' }}>
         <Typography component="div" variant="p">
           {item.name}
