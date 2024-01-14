@@ -29,12 +29,12 @@ export default function InventoryList() {
     <Card key={item.id} sx={{ display: 'flex', my: 2 }}>
       <CardMedia
         component="img"
-        sx={{ width: '20%' }}
+        sx={{ width: '20%' , aspectRatio: '1', objectFit:'contain'}}
         image={`https://spoonacular.com/cdn/ingredients_250x250/${item.image}`} // Assuming 'image' is the URL to the item's image
         alt={item.name}
       />
-      <CardContent sx={{ flex: '1 0 auto' }}>
-        <Typography component="div" variant="p">
+      <CardContent sx={{ flex: '1 1 auto', flexWrap:'wrap' }}>
+        <Typography component="div" variant="p" sx={{textTransform:'capitalize'}}>
           {item.name}
         </Typography>
       </CardContent>
