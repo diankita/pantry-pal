@@ -5,6 +5,7 @@ const db = require('./models/index');
 const inventoryRouter = require('./routers/inventory.router');
 const ingredientRouter = require('./routers/ingredient.router.js');
 const recipeRouter = require('./routers/recipe.router.js');
+const { seedUsers, seedIngredients, seedRecipes } = require('./seed/index.js');
 
 const app = express();
 app.use(cors());
@@ -30,16 +31,11 @@ app.use('/recipe', recipeRouter);
 
 (async () => {
   try {
-    await db.sequelize.drop();
-    await db.sequelize.sync();
+await db.sequelize.sync({ force: true });
 
-    // Add fake data
-    db.User.create({
-      userId: 1,
-      name: 'Joel',
-      email: 'joelcheah01@gmail.com',
-      password: '12345',
-    });
+    await seedUsers();
+    await seedIngredients();
+    await seedRecipes();
 
     console.log('Database synced successfully.');
     const PORT = process.env.PORT || 3001;
