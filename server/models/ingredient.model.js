@@ -29,10 +29,17 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Ingredient.associate = function (models) {
+    // Link to User
     Ingredient.belongsToMany(models.User, {
       through: models.Inventory,
     });
     Ingredient.hasMany(models.Inventory);
+
+    // Link to Recipe
+    Ingredient.belongsToMany(models.Recipe, {
+      through: models.RecipeContainIngredient,
+    });
+    Ingredient.hasMany(models.RecipeContainIngredient);
   };
 
   return Ingredient;
