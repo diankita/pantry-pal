@@ -30,6 +30,7 @@ export default function IngredientSelect({ onChange, filterFunc }) {
       onChange={onChange}
       onInputChange={(event, newInputValue) => setInput(newInputValue)}
       getOptionLabel={(option) => option.name}
+      getOptionKey={(option) => option.id}
       sx={{ width: '100%' }}
       filterOptions={filterFunc}
       renderInput={(params) => (
