@@ -7,4 +7,6 @@ router.get('/', inventory.getAllInventory);
 
 router.post('/', inventory.addToInventory);
 
+router.delete('/', inventory.removeFromInventory);
+
 module.exports = router;

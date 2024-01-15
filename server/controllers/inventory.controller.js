@@ -9,7 +9,7 @@ exports.addToInventory = async (req, res) => {
     console.log(`Adding ingredient for user ${userId}`);
 
     // Check if User exist
-    console.log(userId)
+    console.log(userId);
     const user = await db.User.findByPk(userId);
     if (!user) {
       console.log('User not found');
@@ -43,7 +43,7 @@ exports.addToInventory = async (req, res) => {
   } catch (error) {
     await transaction.rollback();
     console.error(error);
-    
+
     res.status(500).send('Error saving to inventory');
   }
 };
@@ -76,5 +76,35 @@ exports.getAllInventory = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send('Error retrieving inventory');
+  }
+};
+
+exports.removeFromInventory = async (req, res) => {
+  try {
+    const { userId, ingredientId } = req.body;
+
+    // Check if User exist
+    // console.log(userId);
+    const user = await db.User.findByPk(userId);
+    if (!user) {
+      console.log('User not found');
+      return res.status(404).send('User not found');
+    }
+
+    // Add Ingredient to User's Inventory
+    const deleteSuccess = await db.Inventory.destroy({
+      where: {
+        IngredientId: ingredientId,
+        UserId: userId,
+      },
+    });
+    if (deleteSuccess) {
+      res.status(200).send({message: 'Deleted Successfully'});
+    }
+  } catch (error) {
+    await transaction.rollback();
+    console.error(error);
+
+    res.status(500).send('Error saving to inventory');
   }
 };
