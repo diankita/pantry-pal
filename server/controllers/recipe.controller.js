@@ -13,8 +13,8 @@ exports.findByUserInventory = async (req, res) => {
     const recipes = await db.sequelize.query(
       `SELECT
           r.*,
-          COUNT(DISTINCT ri."IngredientId") AS matching_ingredients,
-          (SELECT COUNT(DISTINCT "IngredientId") FROM public."RecipeContainIngredient" WHERE "RecipeId" = r.id) - COUNT(DISTINCT ri."IngredientId") AS missing_ingredients
+          COUNT(DISTINCT ri."IngredientId") AS "matchingIngredients",
+          (SELECT COUNT(DISTINCT "IngredientId") FROM public."RecipeContainIngredient" WHERE "RecipeId" = r.id) - COUNT(DISTINCT ri."IngredientId") AS "missingIngredients"
        FROM
           public."Recipe" r
        JOIN
@@ -26,7 +26,7 @@ exports.findByUserInventory = async (req, res) => {
        GROUP BY
           r.id, r.title
        ORDER BY
-          missing_ingredients ASC, matching_ingredients DESC`,
+          "missingIngredients" ASC, "matchingIngredients" DESC`,
       {
         replacements: { userId: userId },
         type: db.Sequelize.QueryTypes.SELECT,
