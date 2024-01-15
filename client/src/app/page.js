@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 
 export default function Home() {
   // const router = useRouter();
-  redirect('/home');
+  redirect('/login');
   return <main className={styles.main}>
     sadf
   </main>;
