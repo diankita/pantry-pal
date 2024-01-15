@@ -3,7 +3,7 @@ const recipe = require('../controllers/recipe.controller');
 
 const router = express.Router();
 
-router.get('/findByIngredient', recipe.findByIngredient);
+router.get('/findByUserInventory/:userId', recipe.findByUserInventory);
 
 // router.post('/', inventory.addToInventory);
 
