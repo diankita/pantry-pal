@@ -603,7 +603,7 @@ const ingredientsData = [
     id: 1019354,
     aisle: 'Canned and Jarred',
     image: 'pineapple-with-can.png',
-    name: 'pineapple',
+    name: 'canned pineapple',
   },
   {
     id: 20027,
@@ -1035,7 +1035,7 @@ const ingredientsData = [
     id: 11333,
     aisle: 'Produce',
     image: 'green-pepper.jpg',
-    name: 'bell peppers',
+    name: 'green bell peppers',
   },
   {
     id: 11477,
@@ -1131,7 +1131,7 @@ const ingredientsData = [
     id: 10211821,
     aisle: 'Produce',
     image: 'yellow-bell-pepper.jpg',
-    name: 'bell peppers',
+    name: 'yellow bell peppers',
   },
   {
     id: 6480,
@@ -1347,7 +1347,7 @@ const ingredientsData = [
     id: 11821,
     aisle: 'Produce',
     image: 'red-pepper.jpg',
-    name: 'bell pepper',
+    name: 'red bell pepper',
   },
   {
     id: 2054,
@@ -2961,7 +2961,7 @@ const ingredientsData = [
     id: 11951,
     aisle: 'Produce',
     image: 'yellow-bell-pepper.jpg',
-    name: 'bell pepper',
+    name: 'mexican bell pepper',
   },
   {
     id: 1022035,

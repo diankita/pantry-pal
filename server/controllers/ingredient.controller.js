@@ -9,6 +9,12 @@ exports.autocomplete = async (req, res) => {
           [db.Sequelize.Op.like]: `%${query}%`, // Search for any match within the name field
         },
       },
+      attributes: [
+        'name',
+        'image',
+        [db.Sequelize.fn('MIN', db.Sequelize.col('id')), 'id'],
+      ],
+      group: ['name', 'image'],
       limit: 10, // Limit the results to 10
     });
 
