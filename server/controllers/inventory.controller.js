@@ -4,28 +4,12 @@ exports.addToInventory = async (req, res) => {
   // Start a transaction
   const transaction = await db.sequelize.transaction();
   try {
-    const { userId, ingredientName } = req.body;
-
-    const ingredientDetails = await fetch(
-      `https://${process.env.FOOD_API_URL}/food/ingredients/search?query=${ingredientName}&addChildren=true&metaInformation=true&offset=0&number=1`,
-      {
-        headers: {
-          'X-RapidAPI-Key': process.env.FOOD_API_KEY,
-          'X-RapidAPI-Host': process.env.FOOD_API_URL,
-        },
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error('Network response was not ok');
-      })
-      .then((data) => data.results[0]);
+    const { userId, ingredientId } = req.body;
 
     console.log(`Adding ingredient for user ${userId}`);
 
     // Check if User exist
+    console.log(userId)
     const user = await db.User.findByPk(userId);
     if (!user) {
       console.log('User not found');
@@ -33,32 +17,33 @@ exports.addToInventory = async (req, res) => {
     }
 
     // Check if the selected ingredient exists
-    let ingredientFromLocalDB = await db.Ingredient.findByPk(
-      ingredientDetails.id
-    );
+    // let ingredientFromLocalDB = await db.Ingredient.findByPk(
+    //   ingredientDetails.id
+    // );
     // If Not exists, Add Ingredient to Ingredient Table
-    if (!ingredientFromLocalDB) {
-      ingredientFromLocalDB = await db.Ingredient.create({
-        id: ingredientDetails.id,
-        name: ingredientDetails.name,
-        image: ingredientDetails.image,
-        aisle: ingredientDetails.aisle,
-        // possibleUnits: JSON.stringify(ingredient.possibleUnits),
-      });
-    }
+    // if (!ingredientFromLocalDB) {
+    //   ingredientFromLocalDB = await db.Ingredient.create({
+    //     id: ingredientDetails.id,
+    //     name: ingredientDetails.name,
+    //     image: ingredientDetails.image,
+    //     aisle: ingredientDetails.aisle,
+    //     // possibleUnits: JSON.stringify(ingredient.possibleUnits),
+    //   });
+    // }
 
     // Add Ingredient to User's Inventory
-    await db.Inventory.create({
-      IngredientId: ingredientFromLocalDB.id,
+    const inventoryItem = await db.Inventory.create({
+      IngredientId: ingredientId,
       UserId: userId,
     });
 
     // Commit the transaction if no errors when reach here
     await transaction.commit();
-    res.status(201).json(ingredientFromLocalDB);
+    res.status(201).json(inventoryItem);
   } catch (error) {
     await transaction.rollback();
     console.error(error);
+    
     res.status(500).send('Error saving to inventory');
   }
 };
