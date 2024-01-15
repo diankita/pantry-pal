@@ -18,7 +18,7 @@ async function seedUsers() {
     for (const user of usersData) {
       await db.User.create(user);
     }
-    console.log('Ingredients seeded successfully.');
+    console.log('Users seeded successfully.');
   } catch (error) {
     console.error('Error seeding ingredients:', error);
   }
@@ -39,7 +39,7 @@ async function seedRecipes() {
 
       // console.log(recipe.extendedIngredients)
       for (const ingredient of recipe.extendedIngredients) {
-        console.log(recipe.id, ingredient.id)
+        // console.log(recipe.id, ingredient.id)
         await db.RecipeContainIngredient.create({
           IngredientId: ingredient.id,
           RecipeId: recipe.id,
@@ -49,7 +49,7 @@ async function seedRecipes() {
         });
       }
     }
-    console.log('Ingredients seeded successfully.');
+    console.log('Recipes seeded successfully.');
   } catch (error) {
     console.error('Error seeding ingredients:', error);
   }
