@@ -32,11 +32,11 @@ app.use('/recipe', recipeRouter);
 (async () => {
   try {
     await db.sequelize.sync();
-    // await db.sequelize.sync({ force: true });
+    await db.sequelize.sync({ force: true });
 
-    // await seedUsers();
-    // await seedIngredients();
-    // await seedRecipes();
+    await seedUsers();
+    await seedIngredients();
+    await seedRecipes();
 
     console.log('Database synced successfully.');
     const PORT = process.env.PORT || 3001;

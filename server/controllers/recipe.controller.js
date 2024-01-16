@@ -67,16 +67,14 @@ exports.detailsById = async (req, res) => {
     // Restructure the response
     const restructuredRecipeDetails = {
       ...recipeDetailsPlain,
-      ingredients: recipeDetails.RecipeContainIngredients.map(
-        (rci) => ({
-          amount: rci.amount,
-          unit: rci.unit,
-          id: rci.Ingredient.id,
-          name: rci.Ingredient.name,
-          image: rci.Ingredient.image,
-          aisle: rci.Ingredient.aisle,
-        })
-      ),
+      ingredients: recipeDetails.RecipeContainIngredients.map((rci) => ({
+        amount: rci.amount,
+        unit: rci.unit,
+        id: rci.Ingredient.id,
+        name: rci.Ingredient.name,
+        image: rci.Ingredient.image,
+        aisle: rci.Ingredient.aisle,
+      })),
     };
     res.send(restructuredRecipeDetails);
   } catch (error) {
@@ -85,14 +83,12 @@ exports.detailsById = async (req, res) => {
   }
 };
 
-
 exports.randomRecipes = async (req, res) => {
   try {
-
     // Fetch 10 random recipes from the database
     const randomRecipes = await db.Recipe.findAll({
       order: db.sequelize.random(), // Order by random
-      limit: 5                    // Limit to 5 results
+      limit: 5, // Limit to 5 results
     });
     res.send(randomRecipes);
   } catch (error) {

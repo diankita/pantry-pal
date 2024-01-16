@@ -35558,6 +35558,8 @@ const recipesData = [
     servings: 24,
     sourceUrl:
       'http://www.foodista.com/recipe/QHL47KFG/peppermint-hot-chocolate-cupcakes',
+    image: 'https://spoonacular.com/recipeImages/631755-556x370.jpg',
+    imageType: 'jpg',
     summary:
       'The recipe Peppermint Hot Chocolate Cupcakes could satisfy your American craving in approximately <b>45 minutes</b>. This recipe serves 24. This dessert has <b>349 calories</b>, <b>3g of protein</b>, and <b>13g of fat</b> per serving. For <b>59 cents per serving</b>, this recipe <b>covers 5%</b> of your daily requirements of vitamins and minerals. 42 people have tried and liked this recipe. A mixture of heavy cream, semisweet chocolate chips, vanillan extract, and a handful of other ingredients are all it takes to make this recipe so yummy. It is perfect for <b>Christmas</b>. It is brought to you by Foodista. All things considered, we decided this recipe <b>deserves a spoonacular score of 21%</b>. This score is not so excellent. If you like this recipe, take a look at these similar recipes: <a href="https://spoonacular.com/recipes/peppermint-hot-chocolate-cupcakes-587172">Peppermint Hot Chocolate Cupcakes</a>, <a href="https://spoonacular.com/recipes/peppermint-hot-chocolate-cupcakes-590842">Peppermint Hot Chocolate Cupcakes</a>, and <a href="https://spoonacular.com/recipes/crockpot-peppermint-hot-chocolate-peppermint-mocha-recipe-55009">Crockpot Peppermint Hot Chocolate/peppermint Mocha Recipe</a>.',
     cuisines: ['American'],
@@ -54119,6 +54121,8 @@ const recipesData = [
     readyInMinutes: 45,
     servings: 12,
     sourceUrl: 'http://www.foodista.com/recipe/XJJFHR6X/seafood-gumbo',
+    image: 'https://spoonacular.com/recipeImages/659638-556x370.jpg',
+    imageType: 'jpg',
     summary:
       'Seafood Gumbo could be just the <b>dairy free and pescatarian</b> recipe you\'ve been looking for. This recipe serves 12. This main course has <b>376 calories</b>, <b>35g of protein</b>, and <b>5g of fat</b> per serving. For <b>$4.87 per serving</b>, this recipe <b>covers 30%</b> of your daily requirements of vitamins and minerals. This recipe is liked by 4 foodies and cooks. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. This recipe is typical of Cajun cuisine. A mixture of salt and pepper, lump crab meat, flour, and a handful of other ingredients are all it takes to make this recipe so yummy. It is brought to you by Foodista. With a spoonacular <b>score of 80%</b>, this dish is solid. <a href="https://spoonacular.com/recipes/seafood-gumbo-1202205">Seafood Gumbo</a>, <a href="https://spoonacular.com/recipes/seafood-gumbo-3129">Seafood Gumbo</a>, and <a href="https://spoonacular.com/recipes/seafood-gumbo-1262935">Seafood Gumbo</a> are very similar to this recipe.',
     cuisines: ['Creole', 'Cajun'],
@@ -65911,6 +65915,8 @@ const recipesData = [
     readyInMinutes: 45,
     servings: 9,
     sourceUrl: 'https://www.foodista.com/recipe/Z2KPLCN3/jean-s-seafood-gumbo',
+    image: 'https://spoonacular.com/recipeImages/648524-556x370.jpg',
+    imageType: 'jpg',
     summary:
       'Forget going out to eat or ordering takeout every time you crave Cajun food. Try making Jean\'s Seafood Gumbo at home. One serving contains <b>524 calories</b>, <b>68g of protein</b>, and <b>19g of fat</b>. This recipe serves 9 and costs $5.32 per serving. 6 people were impressed by this recipe. This recipe from Foodista requires thyme, salt, tomato paste, and peppers. It works well as a pricey main course. From preparation to the plate, this recipe takes around <b>45 minutes</b>. It is a good option if you\'re following a <b>dairy free</b> diet. With a spoonacular <b>score of 87%</b>, this dish is tremendous. Users who liked this recipe also liked <a href="https://spoonacular.com/recipes/jeans-seafood-gumbo-1394357">Jean\'s Seafood Gumbo</a>, <a href="https://spoonacular.com/recipes/seafood-gumbo-12109">Seafood Gumbo</a>, and <a href="https://spoonacular.com/recipes/seafood-gumbo-332787">Seafood Gumbo</a>.',
     cuisines: ['Creole', 'Cajun'],
@@ -78011,6 +78017,8 @@ const recipesData = [
     servings: 6,
     sourceUrl:
       'https://www.foodista.com/recipe/6FMXSM3N/beef-pot-pies-with-irish-cheddar-crust',
+    image: 'https://spoonacular.com/recipeImages/634660-556x370.jpg',
+    imageType: 'jpg',
     summary:
       'You can never have too many main course recipes, so give Beef Pot Pies with Irish Cheddar Crust a try. One portion of this dish contains approximately <b>43g of protein</b>, <b>38g of fat</b>, and a total of <b>719 calories</b>. For <b>$1.98 per serving</b>, this recipe <b>covers 32%</b> of your daily requirements of vitamins and minerals. This recipe serves 6. 9 people were impressed by this recipe. Not a lot of people really liked this European dish. A mixture of garlic, ice water, carrots, and a handful of other ingredients are all it takes to make this recipe so scrumptious. It is brought to you by Foodista. <b>st. patrick day</b> will be even more special with this recipe. From preparation to the plate, this recipe takes roughly <b>45 minutes</b>. Taking all factors into account, this recipe <b>earns a spoonacular score of 75%</b>, which is solid. Similar recipes include <a href="https://spoonacular.com/recipes/irish-beef-hand-pies-1250241">Irish Beef Hand Pies</a>, <a href="https://spoonacular.com/recipes/irish-beef-hand-pies-93909">Irish Beef Hand Pies</a>, and <a href="https://spoonacular.com/recipes/irish-beef-and-vegetable-hand-pies-a-st-patricks-day-delight-578688">Irish Beef and Vegetable Hand Pies: A St. Patrick\'s Day Delight</a>.',
     cuisines: ['European', 'Irish'],
@@ -85961,6 +85969,8 @@ const recipesData = [
     servings: 8,
     sourceUrl:
       'https://www.foodista.com/recipe/FJKC8HRG/moroccan-kofte-and-sausage-stew',
+    image: 'https://spoonacular.com/recipeImages/652427-556x370.jpg',
+    imageType: 'jpg',
     summary:
       'If you have about <b>45 minutes</b> to spend in the kitchen, Moroccan kofte and sausage stew might be an excellent <b>gluten free, dairy free, paleolithic, and primal</b> recipe to try. One serving contains <b>372 calories</b>, <b>21g of protein</b>, and <b>28g of fat</b>. For <b>$1.64 per serving</b>, you get a main course that serves 8. 12 people found this recipe to be delicious and satisfying. It is perfect for <b>Autumn</b>. It is brought to you by Foodista. If you have coriander half, onion, sausage, and a few other ingredients on hand, you can make it. With a spoonacular <b>score of 49%</b>, this dish is pretty good. If you like this recipe, take a look at these similar recipes: <a href="https://spoonacular.com/recipes/moroccan-stew-762253">Moroccan Stew</a>, <a href="https://spoonacular.com/recipes/vegetarian-moroccan-stew-722829">Vegetarian Moroccan Stew</a>, and <a href="https://spoonacular.com/recipes/moroccan-chicken-stew-557709">Moroccan Chicken Stew</a>.',
     cuisines: [],
