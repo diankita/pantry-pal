@@ -84,3 +84,19 @@ exports.detailsById = async (req, res) => {
     res.status(500).send('Error fetching data from the external API');
   }
 };
+
+
+exports.randomRecipes = async (req, res) => {
+  try {
+
+    // Fetch 10 random recipes from the database
+    const randomRecipes = await db.Recipe.findAll({
+      order: db.sequelize.random(), // Order by random
+      limit: 5                    // Limit to 5 results
+    });
+    res.send(randomRecipes);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error fetching data from the external API');
+  }
+};
