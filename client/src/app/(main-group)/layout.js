@@ -11,7 +11,7 @@ export default function MainLayout({ children }) {
   return (
     <Box height="100%" paddingBottom={7}>
       <TopNav title="aslkdj"></TopNav>
-      <Box width={isMobile ? '100%' : '40vw'} marginX={'auto'} height={'100%'}>
+      <Box width={isMobile ? '100%' : '70vw'} maxWidth={isMobile ? '100%' : '550px'} marginX={'auto'} height={'100%'}>
         {children}
       </Box>
       <BottomNav></BottomNav>

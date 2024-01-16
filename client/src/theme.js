@@ -7,6 +7,10 @@ export const theme = createTheme({
       main: '#fe8700',
       contrastText: "#fff" //button text white instead of black
     },
+    secondary: {
+      main: '#fff',
+      contrastText: "#fe8700" //button text white instead of black
+    },
   },
 });
 

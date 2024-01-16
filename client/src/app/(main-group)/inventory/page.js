@@ -20,7 +20,7 @@ export default function Page() {
 
   return (
     <Box height="100%" paddingX={1} paddingTop={2}>
-      <Box overflow="auto" height="calc(100% - 100px)">
+      <Box overflow="auto" height="calc(100% - 7rem)">
         <InventoryEditor></InventoryEditor>
       </Box>
       <Link
