@@ -12,9 +12,14 @@ import {
   Toolbar,
 } from '@mui/material';
 import Link from 'next/link';
+import { useAppSelector } from '@/lib/hooks';
 
 export default function BottomNav() {
   const pathname = usePathname();
+  const bottomNavConfig = useAppSelector((state) => state.navigation.bottomNav);
+  if (!bottomNavConfig.visible) {
+    return null;
+  }
   return (
     <>
       <Paper
