@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.get('/findByUserInventory/:userId', recipe.findByUserInventory);
 
+router.get('/details/:recipeId', recipe.detailsById);
+
 // router.post('/', inventory.addToInventory);
 
 module.exports = router;

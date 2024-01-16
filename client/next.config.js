@@ -1,8 +1,19 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'spoonacular.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
+}
 
 module.exports = nextConfig
-// next.config.js
+// Your other configurations
 const withVideos = require('next-videos')
 
-module.exports = withVideos()
+module.exports = withVideos(nextConfig)

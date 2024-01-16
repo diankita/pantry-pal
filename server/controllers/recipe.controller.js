@@ -39,3 +39,48 @@ exports.findByUserInventory = async (req, res) => {
     res.status(500).send('Error fetching data from the external API');
   }
 };
+
+exports.detailsById = async (req, res) => {
+  try {
+    const recipeId = req.params.recipeId;
+
+    const recipeDetails = await db.Recipe.findByPk(recipeId, {
+      include: [
+        {
+          model: db.RecipeContainIngredient,
+          attributes: ['amount', 'unit'], // Include amount and unit
+          include: [
+            {
+              model: db.Ingredient,
+              attributes: ['id', 'name', 'image', 'aisle'], // Include desired attributes from Ingredient
+            },
+          ],
+        },
+      ],
+    });
+
+    // Convert Sequelize instance to plain object
+    const recipeDetailsPlain = recipeDetails.get({ plain: true });
+
+    // Remove the original RecipeContainIngredients
+    delete recipeDetailsPlain.RecipeContainIngredients;
+    // Restructure the response
+    const restructuredRecipeDetails = {
+      ...recipeDetailsPlain,
+      ingredients: recipeDetails.RecipeContainIngredients.map(
+        (rci) => ({
+          amount: rci.amount,
+          unit: rci.unit,
+          id: rci.Ingredient.id,
+          name: rci.Ingredient.name,
+          image: rci.Ingredient.image,
+          aisle: rci.Ingredient.aisle,
+        })
+      ),
+    };
+    res.send(restructuredRecipeDetails);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error fetching data from the external API');
+  }
+};
