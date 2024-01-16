@@ -8,8 +8,10 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function RecipeList() {
+  const router = useRouter();
   const [recipeSuggestions, setRecipeSuggestions] = useState([]);
   // TODO conver to use RTK
 
@@ -19,11 +21,14 @@ export default function RecipeList() {
         setRecipeSuggestions(data);
       }
     );
-  },[]);
+  }, []);
   const renderedRecipes = recipeSuggestions.map((recipe) => (
     <Card
       key={recipe.id}
-      sx={{ display: 'flex', my: 2, flexDirection: 'column' }}>
+      sx={{ display: 'flex', my: 2, flexDirection: 'column' }}
+      onClick={() => {
+        router.push(`/recipe/${recipe.id}`)
+      }}>
       <CardMedia
         component="img"
         sx={{ height: '10rem', objectFit: 'fit' }}
