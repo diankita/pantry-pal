@@ -22,7 +22,8 @@ export default function AuthLayout({ children }) {
         <div>
           <Image
             src="/name-logo-light.png"
-            alt="Your Image Description"
+            priority
+            alt="PantryPal Logo"
             width={1000}
             height={1000}
             className={styles['logo']}
