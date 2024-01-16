@@ -1,3 +1,10 @@
+import Typography from '@mui/material/Typography';
+
 export default function Page() {
-  return <h1>profile</h1>
+  return (
+    <Typography component="h1" textAlign={'center'} marginTop={3}>
+      {' '}
+      Coming soon....
+    </Typography>
+  );
 }
