@@ -5,6 +5,4 @@ const router = express.Router();
 
 router.get('/autocomplete', ingredient.autocomplete);
 
-router.get('/search', ingredient.search);
-
 module.exports = router;
