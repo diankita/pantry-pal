@@ -4,11 +4,6 @@ exports.findByUserInventory = async (req, res) => {
   try {
     const userId = req.params.userId;
 
-    const userInventory = await db.Inventory.findAll({
-      where: { UserId: userId },
-    });
-    const userIngredientIds = userInventory.map((item) => item.IngredientId);
-
     // Get all recipes that matches user's inventory and sort by least number of missing ingredients first
     const recipes = await db.sequelize.query(
       `SELECT
