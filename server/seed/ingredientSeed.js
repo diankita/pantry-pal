@@ -1,3 +1,7 @@
+/**
+ * Ingredient seed data.
+ * Contains an array of ingredient objects to be seeded into the database.
+ */
 const ingredientsData = [
   {
     id: 23557,

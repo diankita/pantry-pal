@@ -1,3 +1,7 @@
+/**
+ * Recipe seed data.
+ * Contains an array of recipe objects to be seeded into the database.
+ */
 const recipesData = [
   {
     vegetarian: false,

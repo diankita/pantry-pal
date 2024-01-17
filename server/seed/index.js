@@ -3,6 +3,10 @@ const ingredientsData = require('./ingredientSeed');
 const usersData = require('./userSeed');
 const recipesData = require('./recipeSeed');
 
+/**
+ * Seeds the database with ingredients.
+ * Iterates over an array of ingredient objects and inserts them into the database.
+ */
 async function seedIngredients() {
   try {
     for (const ingredient of ingredientsData) {
@@ -13,6 +17,11 @@ async function seedIngredients() {
     console.error('Error seeding ingredients:', error);
   }
 }
+
+/**
+ * Seeds the database with users.
+ * Iterates over an array of user objects and inserts them into the database.
+ */
 async function seedUsers() {
   try {
     for (const user of usersData) {
@@ -24,10 +33,14 @@ async function seedUsers() {
   }
 }
 
+/**
+ * Seeds the database with recipes.
+ * Iterates over an array of recipe objects, inserts them into the database,
+ * and associates them with their ingredients.
+ */
 async function seedRecipes() {
   try {
     for (const recipe of recipesData) {
-      // await db.User.create(user);
       await db.Recipe.create({
         id: recipe.id,
         title: recipe.title,
@@ -37,9 +50,7 @@ async function seedRecipes() {
         instructions: recipe.instructions,
       });
 
-      // console.log(recipe.extendedIngredients)
       for (const ingredient of recipe.extendedIngredients) {
-        // console.log(recipe.id, ingredient.id)
         await db.RecipeContainIngredient.create({
           IngredientId: ingredient.id,
           RecipeId: recipe.id,
