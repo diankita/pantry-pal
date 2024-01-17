@@ -1,25 +1,14 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('./index.js');
-
-function inventoryModel(sequelize, DataTypes) {
+/**
+ * Defines the Inventory model.
+ * This is a junction table that manages the many-to-many relationship between Users and Ingredients.
+ * @param {object} sequelize - Sequelize instance.
+ * @param {object} DataTypes - Sequelize data types.
+ * @returns The Inventory model.
+ */
+module.exports = (sequelize, DataTypes) => {
   const Inventory = sequelize.define(
     'Inventory',
-    {
-      // ingredientId: {
-      //   type: DataTypes.INTEGER,
-      //   references: {
-      //     model: 'Ingredient',
-      //     key: 'ingredientId',
-      //   },
-      // },
-      // userId: {
-      //   type: DataTypes.INTEGER,
-      //   references: {
-      //     model: 'User',
-      //     key: 'userId',
-      //   },
-      // },
-    },
+    {},
     { freezeTableName: true }
   );
   Inventory.associate = function (models) {
@@ -27,6 +16,4 @@ function inventoryModel(sequelize, DataTypes) {
     Inventory.belongsTo(models.Ingredient);
   };
   return Inventory;
-}
-
-module.exports = inventoryModel;
+};

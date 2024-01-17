@@ -1,3 +1,10 @@
+/**
+ * Defines the Ingredient model.
+ * Ingredients can be associated with multiple Users through the Inventory model and with multiple Recipes through the RecipeContainIngredient model.
+ * @param {object} sequelize - Sequelize instance.
+ * @param {object} DataTypes - Sequelize data types.
+ * @returns The Ingredient model.
+ */
 module.exports = (sequelize, DataTypes) => {
   const Ingredient = sequelize.define(
     'Ingredient',
@@ -20,10 +27,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      // possibleUnits: {
-      //   type: DataTypes.JSONB,
-      //   allowNull: true,
-      // },
     },
     { freezeTableName: true }
   );

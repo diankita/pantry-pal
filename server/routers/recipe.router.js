@@ -9,6 +9,4 @@ router.get('/details/:recipeId', recipe.detailsById);
 
 router.get('/random/', recipe.randomRecipes);
 
-// router.post('/', inventory.addToInventory);
-
 module.exports = router;

@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const db = {};
 
-// Option 3: Passing parameters separately (other dialects)
+// Set up a new Sequelize instance
 const sequelize = new Sequelize(
   process.env.PG_DB,
   process.env.PG_USER,
@@ -15,6 +15,7 @@ const sequelize = new Sequelize(
   }
 );
 
+// Read all model files and import them
 const files = fs.readdirSync(__dirname);
 
 for (let file of files) {
@@ -27,10 +28,12 @@ for (let file of files) {
   }
 }
 
+// Execute associate methods from models (if any)
 for (const model in db) {
   if (db[model].associate) db[model].associate(db);
 }
 
+// Export the db object containing all models
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

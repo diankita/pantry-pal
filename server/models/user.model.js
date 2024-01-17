@@ -1,3 +1,10 @@
+/**
+ * Defines the User model.
+ * Users can have multiple Ingredients in their Inventory.
+ * @param {object} sequelize - Sequelize instance.
+ * @param {object} DataTypes - Sequelize data types.
+ * @returns The User model.
+ */
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',

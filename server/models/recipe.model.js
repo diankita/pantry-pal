@@ -1,3 +1,10 @@
+/**
+ * Defines the Recipe model.
+ * Recipes can be associated with multiple Ingredients through the RecipeContainIngredient model.
+ * @param {object} sequelize - Sequelize instance.
+ * @param {object} DataTypes - Sequelize data types.
+ * @returns The Recipe model.
+ */
 module.exports = (sequelize, DataTypes) => {
   const Recipe = sequelize.define(
     'Recipe',
