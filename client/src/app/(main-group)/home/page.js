@@ -1,4 +1,5 @@
 'use client';
+// TODO remove unused
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { useEffect, useState } from 'react';
 import { setTopNavConfig } from '@/lib/features/navigation/navigationSlice';
@@ -65,7 +66,6 @@ export default function Page() {
     );
 
     fetchWithTimeout(`http://localhost:3001/recipe/random`).then((data) => {
-      console.log(data);
       setRecipeList(data);
     });
   }, [dispatch]);

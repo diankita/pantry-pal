@@ -1,3 +1,4 @@
+// TODO remove commented line
 // src/lib/features/navigation/navigationSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 

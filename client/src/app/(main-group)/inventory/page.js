@@ -1,3 +1,4 @@
+// TODO remove unused
 'use client';
 import InventoryEditor from '@/components/features/inventory/InventoryEditor';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';

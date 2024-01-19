@@ -5,7 +5,7 @@ const db = require('./models/index');
 const inventoryRouter = require('./routers/inventory.router');
 const ingredientRouter = require('./routers/ingredient.router.js');
 const recipeRouter = require('./routers/recipe.router.js');
-const { seedUsers, seedIngredients, seedRecipes } = require('./seed/index.js');
+const {seedUsers, seedIngredients, seedRecipes} = require('./seed/index.js');
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.use(cors());
 
 // Middleware for parsing JSON and urlencoded data
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 
 // TODO: Replace with proper logging
 app.use((req, res, next) => {
@@ -33,10 +33,10 @@ app.use('/recipe', recipeRouter);
     await db.sequelize.sync();
 
     // For dropping and starting over for any changes in database schema and repopulate the database
-    // await db.sequelize.sync({ force: true });
-    // await seedUsers();
-    // await seedIngredients();
-    // await seedRecipes();
+    await db.sequelize.sync({force: true});
+    await seedUsers();
+    await seedIngredients();
+    await seedRecipes();
 
     console.log('Database synced successfully.');
     const PORT = process.env.PORT || 3001;
