@@ -80,15 +80,18 @@ export default function Page() {
         flexDirection: 'column',
         rowGap: '2rem',
         paddingTop: '0.5rem',
-      }}>
+      }}
+    >
       <Box display={'flex'} gap={2}>
         <Box
           position={'relative'}
           width={'4rem'}
-          sx={{ aspectRatio: '1', borderRadius: '50%' }}>
+          sx={{ aspectRatio: '1', borderRadius: '50%' }}
+        >
           <Image
             src="/lebron_james.png"
             priority
+            // Should be alt: "Lebron James"
             alt="PantryPal Logo"
             fill={true}
             style={{ objectFit: 'cover', borderRadius: '50%' }}
@@ -98,12 +101,15 @@ export default function Page() {
           <Typography component={'p'} variant="h6" sx={{ fontWeight: 'bold' }}>
             Hi Lebron
           </Typography>
+          {/* Typo */}
           <Typography>Who are you cooking today?</Typography>
         </Box>
+        {/* Purpose of this button ?? No handleDelete function */}
         <IconButton
           onClick={() => handleDelete(inventory.id)}
           aria-label="delete"
-          sx={{ alignSelf: 'center' }}>
+          sx={{ alignSelf: 'center' }}
+        >
           <NotificationsNoneIcon />
         </IconButton>
       </Box>
@@ -117,14 +123,16 @@ export default function Page() {
           display={'flex'}
           gap={2}
           overflow={'auto'}
-          width={'100%'}>
+          width={'100%'}
+        >
           {categories.length > 0 &&
             categories.map((category, index) => (
               <Box key={index}>
                 <Box
                   position={'relative'}
                   width={'5.5rem'}
-                  sx={{ aspectRatio: '1' }}>
+                  sx={{ aspectRatio: '1' }}
+                >
                   <Image
                     priority
                     src={category.image}
@@ -159,7 +167,8 @@ export default function Page() {
                   aspectRatio: '6/4',
                   position: 'relative',
                   borderRadius: '5%',
-                }}>
+                }}
+              >
                 <Image
                   priority
                   src={recipe.image}
@@ -170,13 +179,15 @@ export default function Page() {
               </Paper>
               <Fab
                 color="secondary"
-                sx={{ position: 'absolute', top: '1rem', right: '1rem' }}>
+                sx={{ position: 'absolute', top: '1rem', right: '1rem' }}
+              >
                 <FavoriteBorderIcon />
               </Fab>
               <Typography
                 component={'p'}
                 variant="h6"
-                sx={{ paddingX: '.3rem' }}>
+                sx={{ paddingX: '.3rem' }}
+              >
                 {recipe.title}
               </Typography>
             </Box>

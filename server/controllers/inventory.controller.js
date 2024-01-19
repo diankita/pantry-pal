@@ -24,7 +24,6 @@ exports.addToInventory = async (req, res) => {
   }
 };
 
-
 exports.getAllInventory = async (req, res) => {
   try {
     const userId = req.query.userId;
@@ -61,7 +60,10 @@ exports.removeFromInventory = async (req, res) => {
       },
     });
     if (deleteSuccess) {
-      res.status(200).send({message: 'Deleted Successfully'});
+      res.status(200).send({ message: 'Deleted Successfully' });
+    } else {
+      // Added else statement
+      res.status(500).send({ message: 'Error deleting from inventory' });
     }
   } catch (error) {
     await transaction.rollback();
