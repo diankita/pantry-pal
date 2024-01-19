@@ -1,5 +1,4 @@
 'use client';
-// TODO remove unused
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { useEffect, useState } from 'react';
 import { setTopNavConfig } from '@/lib/features/navigation/navigationSlice';
@@ -12,7 +11,6 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { fetchWithTimeout } from '@/services/api';
 import { Fab, Paper } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import Link from 'next/link';
 
 export default function Page() {
   const dispatch = useAppDispatch();

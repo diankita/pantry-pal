@@ -3,37 +3,41 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Link from 'next/link';
-import MuiLink from '@mui/material/Link';
+
+// TODO: Refactor using the same Form/ Input/ Box components for both login and signup
+// TODO: Add validation
+// TODO: Add error
+// TODO: Add loading
+// TODO: Add success
+// TODO: Add forgot password
+// TODO: Add social login
+// TODO: Add terms of service, privacy policy, content policy
+// TODO: Add link to login page
 
 export default function Page() {
   return (
     <Box display={'flex'} flexDirection={'column'} gap={2} width={'100%'}>
       <TextField
-        id="login-email"
+        id="signup-email"
         fullWidth
         label="Email"
         type="email"
-        // TODO should probably be email
-        autoComplete="current-password"
       />
       <TextField
-        id="login-password"
+        id="signup-password"
         fullWidth
         label="Password"
         type="password"
-        autoComplete="current-password"
       />
-      <MuiLink href="#" underline="hover" sx={{ alignSelf: 'flex-end' }}>
-        Forgot Password?
-      </MuiLink>
-      <Link
-        href={{
-          pathname: '/home',
-        }}>
-        <Button variant="contained" fullWidth={true}>
-          Login
-        </Button>
-      </Link>
+      <TextField
+        id="signup-confirm-password"
+        fullWidth
+        label="Confirm Password"
+        type="password"
+      />
+      <Button variant="contained" fullWidth={true}>
+        Signup
+      </Button>
       <Box
         sx={{
           display: 'flex',
@@ -50,13 +54,13 @@ export default function Page() {
           <hr />
         </Box>
       </Box>
-      <Typography align="center">Not a member yet? </Typography>
+      <Typography align="center">Already have an account? </Typography>
       <Link
         href={{
-          pathname: '/signup',
+          pathname: '/login',
         }}>
         <Button variant="outlined" fullWidth>
-          Sign Up
+          Login
         </Button>
       </Link>
     </Box>

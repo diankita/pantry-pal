@@ -2,15 +2,17 @@
 import BottomNav from '@/components/BottomNav';
 import TopNav from '@/components/TopNav';
 import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import {Children} from '@/lib/types';
+import React from 'react';
 
-export default function MainLayout({ children }) {
+export default function MainLayout({children}: Children) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <Box height="100%" paddingBottom={7}>
-      <TopNav title="aslkdj"></TopNav>
+      <TopNav></TopNav>
       <Box
         width={isMobile ? '100%' : '70vw'}
         maxWidth={isMobile ? '100%' : '550px'}
