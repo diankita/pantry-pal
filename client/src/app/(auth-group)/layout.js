@@ -1,5 +1,6 @@
 import styles from './layout.module.css';
 import Image from 'next/image';
+// TODO remove unused
 import AbcOutlinedIcon from '@mui/icons-material/AbcOutlined';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';

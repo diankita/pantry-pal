@@ -13,6 +13,7 @@ export default function Page() {
         fullWidth
         label="Email"
         type="email"
+        // TODO should probably be email
         autoComplete="current-password"
       />
       <TextField

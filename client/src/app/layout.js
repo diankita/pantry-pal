@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/build/v14-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
+// Q what is this?
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from '@/theme';
 import StoreProvider from './StoreProvider';
