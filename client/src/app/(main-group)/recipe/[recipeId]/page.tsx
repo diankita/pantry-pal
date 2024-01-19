@@ -13,20 +13,20 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { fetchWithTimeout } from '@/services/api';
+import {useEffect, useState} from 'react';
+import {fetchWithTimeout} from '@/services/api';
 import Fab from '@mui/material/Fab';
 import DOMPurify from 'dompurify';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { setTopNavConfig } from '@/lib/features/navigation/navigationSlice';
+import {useAppDispatch, useAppSelector} from '@/lib/hooks';
+import {setTopNavConfig} from '@/lib/features/navigation/navigationSlice';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Divider from '@mui/material/Divider';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import {useRouter} from 'next/navigation';
 
-export default function Page({ params: { recipeId } }) {
+export default function Page({params: {recipeId}}) {
   const [recipe, setRecipe] = useState(null);
   const [sanitizedSummary, setSanitizedSummary] = useState('');
   const [sanitizedInstructions, setSanitizedInstructions] = useState('');
@@ -113,26 +113,28 @@ export default function Page({ params: { recipeId } }) {
           zIndex: 1,
           left: 1,
           right: 1,
-        }}>
+        }}
+      >
         <Fab
           color="secondary"
-          sx={{ paddingRight: '5px' }}
+          sx={{paddingRight: '5px'}}
           onClick={() => {
             router.back();
-          }}>
+          }}
+        >
           <ArrowBackIosNewIcon />
         </Fab>
         <Fab color="secondary">
           <FavoriteBorderIcon />
         </Fab>
       </Box>
-      <Box position={'relative'} width={'100%'} sx={{ aspectRatio: '4/3' }}>
+      <Box position={'relative'} width={'100%'} sx={{aspectRatio: '4/3'}}>
         <Image
           priority
           src={recipe.image}
           alt={recipe.title}
           fill={true}
-          sx={{ width: '6rem', height: '6rem', objectFit: 'cover' }}
+          // sx={{width: '6rem', height: '6rem', objectFit: 'cover'}}
         />
       </Box>
       <Paper
@@ -145,7 +147,8 @@ export default function Page({ params: { recipeId } }) {
           display: 'flex',
           flexDirection: 'column',
           gap: '1.5rem',
-        }}>
+        }}
+      >
         <Typography variant="h5" component="h1">
           {recipe.title}
         </Typography>
@@ -164,7 +167,7 @@ export default function Page({ params: { recipeId } }) {
           ({recipe.reviews.length} Reviews)
         </Typography>
       </Box> */}
-        <div dangerouslySetInnerHTML={{ __html: sanitizedSummary }} />
+        <div dangerouslySetInnerHTML={{__html: sanitizedSummary}} />
         {/* <Typography variant="body1" component="p" sx={{ my: 2 }}>
           {recipe.summary}
         </Typography> */}
@@ -175,7 +178,8 @@ export default function Page({ params: { recipeId } }) {
             indicatorColor="primary"
             textColor="inherit"
             variant="fullWidth"
-            aria-label="full width tabs example">
+            aria-label="full width tabs example"
+          >
             <Tab label="Steps" />
             <Tab label="Ingredients" />
           </Tabs>
@@ -192,7 +196,7 @@ export default function Page({ params: { recipeId } }) {
                 <React.Fragment key={index}>
                   <ListItem>
                     <ListItemText
-                      sx={{ textTransform: 'capitalize' }}
+                      sx={{textTransform: 'capitalize'}}
                       primary={ingredient.name}
                       secondary={`${ingredient.amount} ${ingredient.unit}`}
                     />
