@@ -20,12 +20,9 @@ const navigationSlice = createSlice({
     setTopNavConfig: (state, action) => {
       state.topNav = { ...state.topNav, ...action.payload };
     },
-    setBottomNavVisibility: (state, action) => {
-      state.bottomNav.visible = action.payload;
-    },
   },
 });
 
-export const { setTopNavConfig, setBottomNavVisibility } = navigationSlice.actions;
+export const { setTopNavConfig } = navigationSlice.actions;
 
 export default navigationSlice.reducer;

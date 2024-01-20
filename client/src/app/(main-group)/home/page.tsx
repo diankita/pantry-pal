@@ -1,61 +1,58 @@
 'use client';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { useAppDispatch } from '@/lib/hooks';
 import { useEffect, useState } from 'react';
 import { setTopNavConfig } from '@/lib/features/navigation/navigationSlice';
-import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Image from 'next/image';
 import Typography from '@mui/material/Typography';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { fetchWithTimeout } from '@/services/api';
 import { Fab, Paper } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { Category } from '@/lib/types';
+import { Category, Recipe } from '@/lib/types';
 
 export default function Page() {
   const dispatch = useAppDispatch();
-  const [recipeList, setRecipeList] = useState([]);
+  const [recipeList, setRecipeList] = useState<Recipe[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
-  // const topNavConfig = useAppSelector(state => state.navigation.topNav);
+
   useEffect(() => {
-    setCategories(
-      [
-        {
-          name: 'Seasonal',
-          image:
-            'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        },
-        {
-          name: 'Seafood',
-          image:
-            'https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        },
-        {
-          name: 'Everyday',
-          image:
-            'https://images.unsplash.com/photo-1505714197102-6ae95091ed70?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        },
-        {
-          name: 'Vegan',
-          image:
-            'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        },
-        {
-          name: 'Desserts',
-          image:
-            'https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        },
-        {
-          name: 'Healthy',
-          image:
-            'https://images.unsplash.com/photo-1540914124281-342587941389?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        },
-        {
-          name: 'Quick',
-          image:
-            'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        },
+    setCategories([
+      {
+        name: 'Seasonal',
+        image:
+          'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
+      {
+        name: 'Seafood',
+        image:
+          'https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
+      {
+        name: 'Everyday',
+        image:
+          'https://images.unsplash.com/photo-1505714197102-6ae95091ed70?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
+      {
+        name: 'Vegan',
+        image:
+          'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
+      {
+        name: 'Desserts',
+        image:
+          'https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
+      {
+        name: 'Healthy',
+        image:
+          'https://images.unsplash.com/photo-1540914124281-342587941389?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
+      {
+        name: 'Quick',
+        image:
+          'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
     ]);
 
     dispatch(
@@ -73,7 +70,6 @@ export default function Page() {
   }, [dispatch]);
 
   return (
-    // TODO fix rendering error
     <Container
       sx={{
         height: 'calc(100% - 3.5rem)',
@@ -96,6 +92,7 @@ export default function Page() {
             alt="Lebron James"
             fill={true}
             style={{ objectFit: 'cover', borderRadius: '50%' }}
+            sizes="100%"
           />
         </Box>
         <Box flex={1} margin={'auto'}>
@@ -146,15 +143,15 @@ export default function Page() {
         <Typography component={'p'} variant="h5" sx={{ fontWeight: 'bold' }}>
           Featured Recipes
         </Typography>
-        <Typography component={'p'} variant='subtitle1'>
+        <Typography component={'p'} variant="subtitle1">
           Get lots of recipe inspiration delivered straight to your palm
         </Typography>
         {recipeList.length > 0 &&
           recipeList.map((recipe, index) => (
             <Box key={recipe.id} marginY={'1rem'} sx={{ position: 'relative' }}>
               <Paper
+                component="div"
                 variant="elevation"
-                width={'100%'}
                 sx={{
                   aspectRatio: '6/4',
                   position: 'relative',
@@ -167,8 +164,10 @@ export default function Page() {
                   alt="PantryPal Logo"
                   fill={true}
                   style={{ objectFit: 'cover', borderRadius: '12px' }}
+                  sizes="100%"
                 />
               </Paper>
+              {/* TODO: add favorite logic missing */}
               <Fab
                 color="secondary"
                 sx={{ position: 'absolute', top: '1rem', right: '1rem' }}

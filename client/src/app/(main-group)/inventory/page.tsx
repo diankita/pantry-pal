@@ -1,21 +1,23 @@
-// TODO remove unused
 'use client';
 import InventoryEditor from '@/components/features/inventory/InventoryEditor';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Link from 'next/link';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { useAppDispatch } from '@/lib/hooks';
 import { useEffect } from 'react';
 import { setTopNavConfig } from '@/lib/features/navigation/navigationSlice';
 
 export default function Page() {
   const dispatch = useAppDispatch();
-  // const topNavConfig = useAppSelector(state => state.navigation.topNav);
 
   useEffect(() => {
     dispatch(
-      setTopNavConfig({ visible: true, title: 'Cook with Inventory', showBackButton: false })
+      setTopNavConfig({
+        visible: true,
+        title: 'Cook with Inventory',
+        showBackButton: false,
+      })
     );
   }, [dispatch]);
 
@@ -27,11 +29,13 @@ export default function Page() {
       <Link
         href={{
           pathname: '/inventory/recipe-suggestion',
-        }}>
+        }}
+      >
         <Button
           variant="contained"
           fullWidth={true}
-          endIcon={<ArrowForwardIcon />}>
+          endIcon={<ArrowForwardIcon />}
+        >
           View Recipes
         </Button>
       </Link>

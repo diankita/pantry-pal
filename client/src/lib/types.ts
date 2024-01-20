@@ -5,13 +5,13 @@ export type Children = {
 export type Category = {
   name: string;
   image: string;
-}
+};
 
 export type Recipe = {
-  id: integer;
+  id: number;
   title: string;
-  readyInMinutes: integer;
-  image?: string;
+  readyInMinutes: number;
+  image: string;
   summary: string;
   instructions: string;
-}
+};
