@@ -29,7 +29,7 @@ export default function Page({params}: {params: {recipeId: string}}) {
   const [recipe, setRecipe] = useState<Recipe>();
   const [sanitizedSummary, setSanitizedSummary] = useState('');
   const [sanitizedInstructions, setSanitizedInstructions] = useState('');
-  const [tabValue, setTabValue] = useState<0 | 1>();
+  const [tabValue, setTabValue] = useState<0 | 1>(0);
 
   const handleChange = (newValue: 0 | 1) => {
     setTabValue(newValue);

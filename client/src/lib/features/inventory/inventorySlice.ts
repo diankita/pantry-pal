@@ -1,7 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = [
-];
+const initialState: any[] = [];
 
 const inventorySlice = createSlice({
   name: 'inventory',
@@ -15,11 +14,12 @@ const inventorySlice = createSlice({
       state.push(...action.payload); // Add new items from the payload
     },
     inventoryRemoveOne(state, action) {
-      return state.filter((inventory)=> inventory.id !== action.payload)
+      return state.filter((inventory) => inventory.id !== action.payload);
     },
   },
 });
 
-export const { inventoryAddOne, inventoryAddList, inventoryRemoveOne } = inventorySlice.actions;
+export const {inventoryAddOne, inventoryAddList, inventoryRemoveOne} =
+  inventorySlice.actions;
 
 export default inventorySlice.reducer;

@@ -1,6 +1,4 @@
-// TODO remove commented line
-// src/lib/features/navigation/navigationSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   topNav: {
@@ -18,11 +16,11 @@ const navigationSlice = createSlice({
   initialState,
   reducers: {
     setTopNavConfig: (state, action) => {
-      state.topNav = { ...state.topNav, ...action.payload };
+      state.topNav = {...state.topNav, ...action.payload};
     },
   },
 });
 
-export const { setTopNavConfig } = navigationSlice.actions;
+export const {setTopNavConfig} = navigationSlice.actions;
 
 export default navigationSlice.reducer;

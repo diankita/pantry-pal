@@ -30,7 +30,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/StoreProvider.js"  ],
+, "src/app/StoreProvider.tsx"  ],
   "exclude": [
     "node_modules"
   ]
