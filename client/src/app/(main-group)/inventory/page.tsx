@@ -4,9 +4,9 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Link from 'next/link';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { useAppDispatch } from '@/lib/hooks';
-import { useEffect } from 'react';
-import { setTopNavConfig } from '@/lib/features/navigation/navigationSlice';
+import {useAppDispatch} from '@/lib/hooks';
+import {useEffect} from 'react';
+import {setTopNavConfig} from '@/lib/features/navigation/navigationSlice';
 
 export default function Page() {
   const dispatch = useAppDispatch();

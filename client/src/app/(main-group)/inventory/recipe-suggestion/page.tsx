@@ -1,9 +1,9 @@
 'use client';
 import RecipeList from '@/components/features/recipe/RecipeList';
 import Box from '@mui/material/Box';
-import { useAppDispatch } from '@/lib/hooks';
-import { useEffect } from 'react';
-import { setTopNavConfig } from '@/lib/features/navigation/navigationSlice';
+import {useAppDispatch} from '@/lib/hooks';
+import {useEffect} from 'react';
+import {setTopNavConfig} from '@/lib/features/navigation/navigationSlice';
 
 export default function Page() {
   const dispatch = useAppDispatch();
