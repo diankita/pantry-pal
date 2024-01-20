@@ -1,4 +1,8 @@
-export const fetchWithTimeout = async (url, options = {}, timeout = 10000) => {
+export const fetchWithTimeout = async (
+  url: string,
+  options = {},
+  timeout = 10000
+) => {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
 
@@ -18,7 +22,7 @@ export const fetchWithTimeout = async (url, options = {}, timeout = 10000) => {
       );
     }
     return await response.json();
-  } catch (error) {
+  } catch (error: any) {
     console.error(`API call failed: ${error.message}`);
     // TODO anyway to display where the error comes from within the try? reponse.json() throws very vague error that doesnt say where it is
   }
