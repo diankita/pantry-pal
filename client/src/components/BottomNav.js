@@ -35,7 +35,7 @@ export default function BottomNav() {
           label="New"
           icon={<AddOutlinedIcon />} component={Button}></BottomNavigationAction> */}
           <BottomNavigationAction
-            label="Likes"
+            label="Favorites"
             icon={<FavoriteBorderOutlinedIcon />}
             component={Link}
             value="/likes"

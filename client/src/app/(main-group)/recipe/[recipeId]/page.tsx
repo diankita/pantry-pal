@@ -1,39 +1,36 @@
 'use client';
-import Container from '@mui/material/Container';
+
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Rating from '@mui/material/Rating';
 import List from '@mui/material/List';
 import Paper from '@mui/material/Paper';
 import ListItemText from '@mui/material/ListItemText';
 import ListItem from '@mui/material/ListItem';
-import Button from '@mui/material/Button';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Image from 'next/image';
-import {useEffect, useState} from 'react';
-import {fetchWithTimeout} from '@/services/api';
+import { useEffect, useState } from 'react';
+import { fetchWithTimeout } from '@/services/api';
 import Fab from '@mui/material/Fab';
 import DOMPurify from 'dompurify';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import {useAppDispatch, useAppSelector} from '@/lib/hooks';
-import {setTopNavConfig} from '@/lib/features/navigation/navigationSlice';
+import { useAppDispatch } from '@/lib/hooks';
+import { setTopNavConfig } from '@/lib/features/navigation/navigationSlice';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Divider from '@mui/material/Divider';
-import Link from 'next/link';
-import {useRouter} from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
-export default function Page({params: {recipeId}}) {
+export default function Page({ params }: { params: { recipeId: string } }) {
+  const router = useRouter();
+  const recipeId = params.recipeId;
+
   const [recipe, setRecipe] = useState(null);
   const [sanitizedSummary, setSanitizedSummary] = useState('');
   const [sanitizedInstructions, setSanitizedInstructions] = useState('');
   const [tabValue, setTabValue] = useState(0);
-  const router = useRouter();
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (newValue) => {
     setTabValue(newValue);
   };
 
@@ -60,7 +57,7 @@ export default function Page({params: {recipeId}}) {
     );
   }, [recipeId]);
 
-  const renderInstruction = (instruction) => {
+  const renderInstruction = (instruction: string) => {
     let newInstructions;
     if (instruction.includes('<') && instruction.includes('>')) {
       // If the instruction contains HTML tags, render as HTML
@@ -117,7 +114,7 @@ export default function Page({params: {recipeId}}) {
       >
         <Fab
           color="secondary"
-          sx={{paddingRight: '5px'}}
+          sx={{ paddingRight: '5px' }}
           onClick={() => {
             router.back();
           }}
@@ -128,7 +125,7 @@ export default function Page({params: {recipeId}}) {
           <FavoriteBorderIcon />
         </Fab>
       </Box>
-      <Box position={'relative'} width={'100%'} sx={{aspectRatio: '4/3'}}>
+      <Box position={'relative'} width={'100%'} sx={{ aspectRatio: '4/3' }}>
         <Image
           priority
           src={recipe.image}
@@ -167,7 +164,7 @@ export default function Page({params: {recipeId}}) {
           ({recipe.reviews.length} Reviews)
         </Typography>
       </Box> */}
-        <div dangerouslySetInnerHTML={{__html: sanitizedSummary}} />
+        <div dangerouslySetInnerHTML={{ __html: sanitizedSummary }} />
         {/* <Typography variant="body1" component="p" sx={{ my: 2 }}>
           {recipe.summary}
         </Typography> */}
@@ -196,7 +193,7 @@ export default function Page({params: {recipeId}}) {
                 <React.Fragment key={index}>
                   <ListItem>
                     <ListItemText
-                      sx={{textTransform: 'capitalize'}}
+                      sx={{ textTransform: 'capitalize' }}
                       primary={ingredient.name}
                       secondary={`${ingredient.amount} ${ingredient.unit}`}
                     />
