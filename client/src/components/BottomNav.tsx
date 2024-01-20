@@ -3,8 +3,8 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import { usePathname } from 'next/navigation';
-import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
+import {usePathname} from 'next/navigation';
+import {BottomNavigation, BottomNavigationAction, Paper} from '@mui/material';
 import Link from 'next/link';
 
 export default function BottomNav() {
@@ -13,7 +13,7 @@ export default function BottomNav() {
   return (
     <>
       <Paper
-        sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
+        sx={{position: 'fixed', bottom: 0, left: 0, right: 0}}
         elevation={3}
       >
         <BottomNavigation value={pathname}>
@@ -31,9 +31,6 @@ export default function BottomNav() {
             value="/inventory"
             href="/inventory"
           />
-          {/* <BottomNavigationAction
-          label="New"
-          icon={<AddOutlinedIcon />} component={Button}></BottomNavigationAction> */}
           <BottomNavigationAction
             label="Favorites"
             icon={<FavoriteBorderOutlinedIcon />}

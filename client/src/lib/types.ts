@@ -1,9 +1,3 @@
-export type TopNavConfig = {
-  visible: boolean;
-  title?: string;
-  showBackButton: boolean;
-}
-
 export type Children = {
   children: React.ReactNode;
 };
@@ -17,6 +11,7 @@ export type Ingredient = {
   name: string;
   amount: number;
   unit: string;
+  id: number;
 }
 
 export type Recipe = {
