@@ -1,13 +1,15 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const db = require('./models/index');
-const inventoryRouter = require('./routers/inventory.router');
-const ingredientRouter = require('./routers/ingredient.router.js');
-const recipeRouter = require('./routers/recipe.router.js');
-const {seedUsers, seedIngredients, seedRecipes} = require('./seed/index.js');
+import dotenv from 'dotenv';
+import express, {Express, Request, Response, Application} from 'express';
+import cors from 'cors';
+import db from './models/index';
+import inventoryRouter from './routers/inventory.router';
+import ingredientRouter from './routers/ingredient.router';
+import recipeRouter from './routers/recipe.router';
+import { seedUsers, seedIngredients, seedRecipes } from './seed/index';
 
-const app = express();
+dotenv.config();
+
+const app: Application = express();
 
 // Middleware for enabling CORS
 app.use(cors());
@@ -17,8 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // TODO: Replace with proper logging
-app.use((req, res, next) => {
-  console.log('Requested at: ', Date.now());
+app.use((req: Request, res: Response, next: Function) => {
   next();
 });
 // TODO: Add unified error handling middleware

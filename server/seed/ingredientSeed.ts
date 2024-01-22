@@ -3605,4 +3605,4 @@ const ingredientsData = [
   },
 ];
 
-module.exports = ingredientsData;
+export default ingredientsData;

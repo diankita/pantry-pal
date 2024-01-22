@@ -9,4 +9,4 @@ router.get('/details/:recipeId', recipe.detailsById);
 
 router.get('/random/', recipe.randomRecipes);
 
-module.exports = router;
+export default router;

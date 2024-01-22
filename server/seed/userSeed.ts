@@ -11,4 +11,4 @@ const usersData = [
   }
 ];
 
-module.exports = usersData;
+export default usersData;

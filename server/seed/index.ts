@@ -1,7 +1,7 @@
-const db = require('../models/index');
-const ingredientsData = require('./ingredientSeed');
-const usersData = require('./userSeed');
-const recipesData = require('./recipeSeed');
+import db from '../models/index';
+import ingredientsData from './ingredientSeed';
+import usersData from './userSeed';
+import recipesData from './recipeSeed';
 
 /**
  * Seeds the database with ingredients.
@@ -66,7 +66,7 @@ async function seedRecipes() {
   }
 }
 
-module.exports = {
+export {
   seedIngredients,
   seedUsers,
   seedRecipes,

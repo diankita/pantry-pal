@@ -5,4 +5,4 @@ const router = express.Router();
 
 router.get('/autocomplete', ingredient.autocomplete);
 
-module.exports = router;
+export default router;

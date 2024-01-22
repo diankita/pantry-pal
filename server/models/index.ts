@@ -1,6 +1,7 @@
-const { Sequelize } = require('sequelize');
-const fs = require('fs');
-const path = require('path');
+import { Sequelize } from 'sequelize';
+import fs from 'fs';
+import path from 'path';
+
 const db = {};
 
 // Set up a new Sequelize instance
@@ -37,4 +38,4 @@ for (const model in db) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+export default db;

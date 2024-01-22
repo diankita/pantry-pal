@@ -9,4 +9,4 @@ router.post('/', inventory.addToInventory);
 
 router.delete('/', inventory.removeFromInventory);
 
-module.exports = router;
+export default router;

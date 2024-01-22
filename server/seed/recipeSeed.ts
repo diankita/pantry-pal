@@ -92182,4 +92182,4 @@ const recipesData = [
   },
 ];
 
-module.exports = recipesData;
+export default recipesData;
