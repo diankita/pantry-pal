@@ -1,20 +1,20 @@
 'use client';
-import {Autocomplete, TextField} from '@mui/material';
-import {useEffect, useState} from 'react';
-import useDebounce from '@/hooks/useDebounce';
-import {fetchWithTimeout} from '@/services/api';
-import {Ingredient} from '@/lib/types';
+import { Autocomplete, TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
+import useDebounce from '../hooks/useDebounce';
+import { fetchWithTimeout } from '../services/api';
+import { Ingredient } from '@/lib/types';
 
 type IngredientSelectProps = {
-  onChange: (event: React.ChangeEvent<{}>, value: any) => void;
+  onIngredientSelect: (event: React.ChangeEvent<{}>, value: any) => void;
   filterFunc: (
     options: Ingredient[],
-    state: {inputValue: string}
+    state: { inputValue: string }
   ) => Ingredient[];
 };
 
 export default function IngredientSelect({
-  onChange,
+  onIngredientSelect,
   filterFunc,
 }: IngredientSelectProps) {
   const [input, setInput] = useState('');
@@ -36,11 +36,11 @@ export default function IngredientSelect({
       disablePortal
       id="combo-box-demo"
       options={ingredients}
-      onChange={onChange}
+      onChange={onIngredientSelect}
       onInputChange={(event, newInputValue) => setInput(newInputValue)}
       getOptionLabel={(ingredient) => ingredient.name}
       getOptionKey={(ingredient) => ingredient.id}
-      sx={{width: '100%'}}
+      sx={{ width: '100%' }}
       filterOptions={filterFunc}
       renderInput={(params) => (
         <TextField {...params} label="Select Ingredients" />

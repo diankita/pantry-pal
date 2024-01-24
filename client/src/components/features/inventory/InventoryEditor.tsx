@@ -1,11 +1,11 @@
 'use client';
 import IngredientSelect from '@/components/IngredientSelect';
 import InventoryList from '@/components/InventoryList';
-import {inventoryAddOne} from '@/lib/features/inventory/inventorySlice';
-import {useAppDispatch} from '@/lib/hooks';
-import {Ingredient} from '@/lib/types';
-import {fetchWithTimeout} from '@/services/api';
-import {useState} from 'react';
+import { inventoryAddOne } from '@/lib/features/inventory/inventorySlice';
+import { useAppDispatch } from '@/lib/hooks';
+import { Ingredient } from '@/lib/types';
+import { fetchWithTimeout } from '@/services/api';
+import { useState } from 'react';
 
 export default function InventoryEditor() {
   const [autocompleteKey, setAutocompleteKey] = useState<number>(0);
@@ -38,7 +38,7 @@ export default function InventoryEditor() {
 
   function filterFunc(
     options: Ingredient[],
-    {inputValue}: {inputValue: string}
+    { inputValue }: { inputValue: string }
   ) {
     return options.filter((option) => option.name.includes(inputValue));
   }
@@ -46,7 +46,7 @@ export default function InventoryEditor() {
   return (
     <>
       <IngredientSelect
-        onChange={onIngredientSelect}
+        onIngredientSelect={onIngredientSelect}
         filterFunc={filterFunc}
         key={autocompleteKey}
       />

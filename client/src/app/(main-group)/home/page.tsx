@@ -1,12 +1,12 @@
 'use client';
-import { useAppDispatch } from '@/lib/hooks';
+import { useAppDispatch } from '../../../lib/hooks';
 import { useEffect, useState } from 'react';
-import { setTopNavConfig } from '@/lib/features/navigation/navigationSlice';
+import { setTopNavConfig } from '../../../lib/features/navigation/navigationSlice';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Image from 'next/image';
 import Typography from '@mui/material/Typography';
-import { fetchWithTimeout } from '@/services/api';
+import { fetchWithTimeout } from '../../../services/api';
 import { Fab, Paper } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Category, Recipe } from '@/lib/types';
