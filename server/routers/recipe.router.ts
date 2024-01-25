@@ -1,12 +1,17 @@
-const express = require('express');
-const recipe = require('../controllers/recipe.controller');
+import express from 'express';
+import {
+  findByUserInventory,
+  detailsById,
+  randomRecipes,
+} from '../controllers/recipe.controller';
 
 const router = express.Router();
+console.log(typeof router);
 
-router.get('/findByUserInventory/:userId', recipe.findByUserInventory);
+router.get('/findByUserInventory/:userId', findByUserInventory);
 
-router.get('/details/:recipeId', recipe.detailsById);
+router.get('/details/:recipeId', detailsById);
 
-router.get('/random/', recipe.randomRecipes);
+router.get('/random/', randomRecipes);
 
 export default router;

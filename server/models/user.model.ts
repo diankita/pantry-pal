@@ -1,3 +1,15 @@
+import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
+import { Sequelize, DataType } from 'sequelize-typescript';
+
+interface IUser
+  extends Model<InferAttributes<IUser>, InferCreationAttributes<IUser>> {
+  associate: (models: any) => void;
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+}
+
 /**
  * Defines the User model.
  * Users can have multiple Ingredients in their Inventory.
@@ -5,8 +17,8 @@
  * @param {object} DataTypes - Sequelize data types.
  * @returns The User model.
  */
-module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
+export default (sequelize: Sequelize, DataTypes: typeof DataType) => {
+  const User = sequelize.define<IUser>(
     'User',
     {
       id: {
@@ -30,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     { freezeTableName: true }
   );
 
-  User.associate = function (models) {
+  (User as unknown as IUser).associate = function (models) {
     User.belongsToMany(models.Ingredient, {
       through: models.Inventory,
     });

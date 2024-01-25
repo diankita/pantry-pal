@@ -1,3 +1,18 @@
+import { Sequelize, DataType } from 'sequelize-typescript';
+import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
+
+interface IIngredient
+  extends Model<
+    InferAttributes<IIngredient>,
+    InferCreationAttributes<IIngredient>
+  > {
+  associate: (models: any) => void;
+  id: number;
+  name: string;
+  image: string;
+  aisle: string;
+}
+
 /**
  * Defines the Ingredient model.
  * Ingredients can be associated with multiple Users through the Inventory model and with multiple Recipes through the RecipeContainIngredient model.
@@ -5,7 +20,7 @@
  * @param {object} DataTypes - Sequelize data types.
  * @returns The Ingredient model.
  */
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize: Sequelize, DataTypes: typeof DataType) => {
   const Ingredient = sequelize.define(
     'Ingredient',
     {
@@ -31,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     { freezeTableName: true }
   );
 
-  Ingredient.associate = function (models) {
+  (Ingredient as unknown as IIngredient).associate = function (models) {
     // Link to User
     Ingredient.belongsToMany(models.User, {
       through: models.Inventory,

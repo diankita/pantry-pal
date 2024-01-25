@@ -1,3 +1,16 @@
+import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
+import { Sequelize, DataType } from 'sequelize-typescript';
+
+interface IRecipe
+  extends Model<InferAttributes<IRecipe>, InferCreationAttributes<IRecipe>> {
+  associate: (models: any) => void;
+  id: number;
+  title: string;
+  readyInMinutes: number;
+  image: string;
+  summary: string;
+  instructions: string;
+}
 /**
  * Defines the Recipe model.
  * Recipes can be associated with multiple Ingredients through the RecipeContainIngredient model.
@@ -5,40 +18,40 @@
  * @param {object} DataTypes - Sequelize data types.
  * @returns The Recipe model.
  */
-module.exports = (sequelize, DataTypes) => {
-  const Recipe = sequelize.define(
+export default (sequelize: Sequelize, DataTypes: typeof DataType) => {
+  const Recipe = sequelize.define<IRecipe>(
     'Recipe',
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
       },
       title: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       readyInMinutes: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       image: {
         type: DataTypes.STRING, // Increased length for URLs
-        allowNull: true // Assuming image is optional
+        allowNull: true, // Assuming image is optional
       },
       summary: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
       },
       instructions: {
         type: DataTypes.TEXT,
-        allowNull: false
-      }
+        allowNull: false,
+      },
     },
     { freezeTableName: true }
   );
 
-  Recipe.associate = function (models) {
+  (Recipe as unknown as IRecipe).associate = function (models) {
     Recipe.belongsToMany(models.Ingredient, {
       through: models.RecipeContainIngredient,
     });

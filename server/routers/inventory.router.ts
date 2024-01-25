@@ -1,12 +1,16 @@
-const express = require('express');
-const inventory = require('../controllers/inventory.controller');
+import express from 'express';
+import {
+  getAllInventory,
+  addToInventory,
+  removeFromInventory,
+} from '../controllers/inventory.controller';
 
 const router = express.Router();
 
-router.get('/', inventory.getAllInventory);
+router.get('/', getAllInventory);
 
-router.post('/', inventory.addToInventory);
+router.post('/', addToInventory);
 
-router.delete('/', inventory.removeFromInventory);
+router.delete('/', removeFromInventory);
 
 export default router;

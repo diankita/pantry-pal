@@ -1,6 +1,7 @@
-const db = require('../models');
+import { Request, Response } from 'express';
+import db from '../models';
 
-exports.addToInventory = async (req, res) => {
+export const addToInventory = async (req: Request, res: Response) => {
   const transaction = await db.sequelize.transaction();
   try {
     const { userId, ingredientId } = req.body;
@@ -24,11 +25,22 @@ exports.addToInventory = async (req, res) => {
   }
 };
 
-exports.getAllInventory = async (req, res) => {
+export const getAllInventory = async (req: Request, res: Response) => {
+  type Ingredient = {
+    id: number;
+    name: string;
+    image: string;
+    aisle: string;
+  };
+  type Item = {
+    id: number;
+    Ingredient: Ingredient[];
+  };
+
   try {
     const userId = req.query.userId;
 
-    const inventoryItems = await db.Inventory.findAll({
+    const inventoryItems: Item[] = await db.Inventory.findAll({
       where: { UserId: userId },
       include: [
         {
@@ -45,7 +57,7 @@ exports.getAllInventory = async (req, res) => {
   }
 };
 
-exports.removeFromInventory = async (req, res) => {
+export const removeFromInventory = async (req: Request, res: Response) => {
   try {
     const { userId, ingredientId } = req.body;
     const user = await db.User.findByPk(userId);
@@ -66,7 +78,7 @@ exports.removeFromInventory = async (req, res) => {
       res.status(500).send({ message: 'Error deleting from inventory' });
     }
   } catch (error) {
-    await transaction.rollback();
+    // await transaction.rollback();
     res.status(500).send('Error saving to inventory');
   }
 };

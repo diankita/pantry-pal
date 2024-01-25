@@ -1,6 +1,8 @@
-const db = require('../models');
+import { Request, Response } from 'express';
+import db from '../models';
+import { QueryTypes } from 'sequelize';
 
-exports.findByUserInventory = async (req, res) => {
+const findByUserInventory = async (req: Request, res: Response) => {
   try {
     const userId = req.params.userId;
 
@@ -24,10 +26,9 @@ exports.findByUserInventory = async (req, res) => {
           "missingIngredients" ASC, "matchingIngredients" DESC`,
       {
         replacements: { userId: userId },
-        type: db.Sequelize.QueryTypes.SELECT,
+        type: QueryTypes.SELECT,
       }
     );
-    // console.log(recipes);
     res.send(recipes);
   } catch (error) {
     console.error(error);
@@ -35,7 +36,7 @@ exports.findByUserInventory = async (req, res) => {
   }
 };
 
-exports.detailsById = async (req, res) => {
+const detailsById = async (req: Request, res: Response) => {
   try {
     const recipeId = req.params.recipeId;
 
@@ -62,7 +63,7 @@ exports.detailsById = async (req, res) => {
     // Restructure the response
     const restructuredRecipeDetails = {
       ...recipeDetailsPlain,
-      ingredients: recipeDetails.RecipeContainIngredients.map((rci) => ({
+      ingredients: recipeDetails.RecipeContainIngredients.map((rci: any) => ({
         amount: rci.amount,
         unit: rci.unit,
         id: rci.Ingredient.id,
@@ -78,7 +79,7 @@ exports.detailsById = async (req, res) => {
   }
 };
 
-exports.randomRecipes = async (req, res) => {
+const randomRecipes = async (req: Request, res: Response) => {
   try {
     // Fetch 10 random recipes from the database
     const randomRecipes = await db.Recipe.findAll({
@@ -91,3 +92,5 @@ exports.randomRecipes = async (req, res) => {
     res.status(500).send('Error fetching data from the external API');
   }
 };
+
+export { findByUserInventory, detailsById, randomRecipes };

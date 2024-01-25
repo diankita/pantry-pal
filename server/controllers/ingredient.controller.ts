@@ -1,12 +1,15 @@
-const db = require('../models');
+import db from '../models';
+import { Request, Response } from 'express';
+import { Op } from 'sequelize';
 
-exports.autocomplete = async (req, res) => {
+export const autocomplete = async (req: Request, res: Response) => {
   try {
+    console.log(db.Ingredient);
     const query = req.query.query;
     const ingredients = await db.Ingredient.findAll({
       where: {
         name: {
-          [db.Sequelize.Op.like]: `%${query}%`, 
+          [Op.like]: `%${query}%`,
         },
       },
       attributes: [
