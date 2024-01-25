@@ -20,15 +20,15 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Divider from '@mui/material/Divider';
 import {useRouter} from 'next/navigation';
-import {Recipe, TopNavConfig, Ingredient} from '@/lib/types';
+import {Recipe, Ingredient} from '@/lib/types';
 
 export default function Page({params}: {params: {recipeId: string}}) {
   const router = useRouter();
   const recipeId = params.recipeId;
 
   const [recipe, setRecipe] = useState<Recipe>();
-  const [sanitizedSummary, setSanitizedSummary] = useState('');
-  const [sanitizedInstructions, setSanitizedInstructions] = useState('');
+  const [sanitizedSummary, setSanitizedSummary] = useState<string>('');
+  const [sanitizedInstructions, setSanitizedInstructions] = useState<string>('');
   const [tabValue, setTabValue] = useState<0 | 1>(0);
 
   const handleChange = (newValue: 0 | 1) => {

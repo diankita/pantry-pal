@@ -11,8 +11,6 @@ export default function InventoryEditor() {
   const [autocompleteKey, setAutocompleteKey] = useState<number>(0);
   const dispatch = useAppDispatch();
 
-  // TODO save it to user database, and then add to rtk state
-  // TODO when app launch call api to get list of save inventories
   async function onIngredientSelect(
     event: React.ChangeEvent<{}>,
     selectedIngredient: Ingredient

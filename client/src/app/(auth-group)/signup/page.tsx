@@ -4,16 +4,6 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Link from 'next/link';
 
-// TODO: Refactor using the same Form/ Input/ Box components for both login and signup
-// TODO: Add validation
-// TODO: Add error
-// TODO: Add loading
-// TODO: Add success
-// TODO: Add forgot password
-// TODO: Add social login
-// TODO: Add terms of service, privacy policy, content policy
-// TODO: Add link to login page
-
 export default function Page() {
   return (
     <Box display={'flex'} flexDirection={'column'} gap={2} width={'100%'}>
